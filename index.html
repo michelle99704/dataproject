@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 1444px;
+            height: 1032px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/Bikeways_3.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        })
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+            if (bounds_group.getLayers().length) {
+                map.fitBounds(bounds_group.getBounds());
+            }
+        }
+        map.createPane('pane_StamenToner_0');
+        map.getPane('pane_StamenToner_0').style.zIndex = 400;
+        var layer_StamenToner_0 = L.tileLayer('http://a.tile.stamen.com/toner/{z}/{x}/{y}.png', {
+            pane: 'pane_StamenToner_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 18
+        });
+        layer_StamenToner_0;
+        map.addLayer(layer_StamenToner_0);
+        map.createPane('pane_Collisionsinvolvingcyclists_1');
+        map.getPane('pane_Collisionsinvolvingcyclists_1').style.zIndex = 401;
+        var img_Collisionsinvolvingcyclists_1 = 'data/Collisionsinvolvingcyclists_1.png';
+        var img_bounds_Collisionsinvolvingcyclists_1 = [[43.583087806538735,-79.6247020326501],[43.84755177796738,-79.23573610949943]];
+        var layer_Collisionsinvolvingcyclists_1 = new L.imageOverlay(img_Collisionsinvolvingcyclists_1,
+                                              img_bounds_Collisionsinvolvingcyclists_1,
+                                              {pane: 'pane_Collisionsinvolvingcyclists_1'});
+        bounds_group.addLayer(layer_Collisionsinvolvingcyclists_1);
+        map.addLayer(layer_Collisionsinvolvingcyclists_1);
+        map.createPane('pane_Collisionsinvolvingmotorists_2');
+        map.getPane('pane_Collisionsinvolvingmotorists_2').style.zIndex = 402;
+        var img_Collisionsinvolvingmotorists_2 = 'data/Collisionsinvolvingmotorists_2.png';
+        var img_bounds_Collisionsinvolvingmotorists_2 = [[43.57363208922042,-79.65055359045566],[43.869754997432324,-79.10292781248981]];
+        var layer_Collisionsinvolvingmotorists_2 = new L.imageOverlay(img_Collisionsinvolvingmotorists_2,
+                                              img_bounds_Collisionsinvolvingmotorists_2,
+                                              {pane: 'pane_Collisionsinvolvingmotorists_2'});
+        bounds_group.addLayer(layer_Collisionsinvolvingmotorists_2);
+        map.addLayer(layer_Collisionsinvolvingmotorists_2);
+        function pop_Bikeways_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['GEO_ID'] !== null ? autolinker.link(feature.properties['GEO_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LFN_ID'] !== null ? autolinker.link(feature.properties['LFN_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LF_NAME'] !== null ? autolinker.link(feature.properties['LF_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ADDRESS_L'] !== null ? autolinker.link(feature.properties['ADDRESS_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ADDRESS_R'] !== null ? autolinker.link(feature.properties['ADDRESS_R'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OE_FLAG_L'] !== null ? autolinker.link(feature.properties['OE_FLAG_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OE_FLAG_R'] !== null ? autolinker.link(feature.properties['OE_FLAG_R'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LONUML'] !== null ? autolinker.link(feature.properties['LONUML'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['HINUML'] !== null ? autolinker.link(feature.properties['HINUML'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LONUMR'] !== null ? autolinker.link(feature.properties['LONUMR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['HINUMR'] !== null ? autolinker.link(feature.properties['HINUMR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FNODE'] !== null ? autolinker.link(feature.properties['FNODE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TNODE'] !== null ? autolinker.link(feature.properties['TNODE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ONE_WAY_DI'] !== null ? autolinker.link(feature.properties['ONE_WAY_DI'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['DIR_CODE_D'] !== null ? autolinker.link(feature.properties['DIR_CODE_D'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FCODE'] !== null ? autolinker.link(feature.properties['FCODE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FCODE_DESC'] !== null ? autolinker.link(feature.properties['FCODE_DESC'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['JURIS_CODE'] !== null ? autolinker.link(feature.properties['JURIS_CODE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? autolinker.link(feature.properties['OBJECTID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CP_TYPE'] !== null ? autolinker.link(feature.properties['CP_TYPE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Bikeways_3_0(feature) {
+            switch(String(feature.properties['CP_TYPE'])) {
+                case 'Bike Lanes':
+                    return {
+                pane: 'pane_Bikeways_3',
+                opacity: 1,
+                color: 'rgba(226,24,35,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+                    break;
+                case 'Cycle Tracks':
+                    return {
+                pane: 'pane_Bikeways_3',
+                opacity: 1,
+                color: 'rgba(231,184,108,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+                    break;
+                case 'Informal Dirt Footpath':
+                    return {
+                pane: 'pane_Bikeways_3',
+                opacity: 1,
+                color: 'rgba(231,34,179,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+                    break;
+                case 'Major Multi-use Pathway':
+                    return {
+                pane: 'pane_Bikeways_3',
+                opacity: 1,
+                color: 'rgba(63,167,208,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+                    break;
+                case 'Minor Multi-use Pathway':
+                    return {
+                pane: 'pane_Bikeways_3',
+                opacity: 1,
+                color: 'rgba(191,238,71,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+                    break;
+                case 'Park Roads Cycling Connections':
+                    return {
+                pane: 'pane_Bikeways_3',
+                opacity: 1,
+                color: 'rgba(33,235,158,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+                    break;
+                case 'Quiet Street Cycling Routes':
+                    return {
+                pane: 'pane_Bikeways_3',
+                opacity: 1,
+                color: 'rgba(37,239,27,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+                    break;
+                case 'Signed Routes':
+                    return {
+                pane: 'pane_Bikeways_3',
+                opacity: 1,
+                color: 'rgba(158,39,236,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_Bikeways_3',
+                opacity: 1,
+                color: 'rgba(29,41,217,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Bikeways_3');
+        map.getPane('pane_Bikeways_3').style.zIndex = 403;
+        map.getPane('pane_Bikeways_3').style['mix-blend-mode'] = 'normal';
+        var layer_Bikeways_3 = new L.geoJson(json_Bikeways_3, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_Bikeways_3',
+            layerName: 'layer_Bikeways_3',
+            pane: 'pane_Bikeways_3',
+            onEachFeature: pop_Bikeways_3,
+            style: style_Bikeways_3_0,
+        });
+        bounds_group.addLayer(layer_Bikeways_3);
+        map.addLayer(layer_Bikeways_3);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'Bikeways<br /><table><tr><td style="text-align: center;"><img src="legend/Bikeways_3_BikeLanes0.png" /></td><td>Bike Lanes</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_CycleTracks1.png" /></td><td>Cycle Tracks</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_InformalDirtFootpath2.png" /></td><td>Informal Dirt Footpath</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_MajorMultiusePathway3.png" /></td><td>Major Multi-use Pathway</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_MinorMultiusePathway4.png" /></td><td>Minor Multi-use Pathway</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_ParkRoadsCyclingConnections5.png" /></td><td>Park Roads Cycling Connections</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_QuietStreetCyclingRoutes6.png" /></td><td>Quiet Street Cycling Routes</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_SignedRoutes7.png" /></td><td>Signed Routes</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_8.png" /></td><td></td></tr></table>': layer_Bikeways_3,"Collisions involving motorists": layer_Collisionsinvolvingmotorists_2,"Collisions involving cyclists": layer_Collisionsinvolvingcyclists_1,"Stamen Toner": layer_StamenToner_0,}).addTo(map);
+        setBounds();
+        L.ImageOverlay.include({
+            getBounds: function () {
+                return this._bounds;
+            }
+        });
+        </script>
+    </body>
+</html>
