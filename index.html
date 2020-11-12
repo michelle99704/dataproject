@@ -43,6 +43,7 @@
             if (bounds_group.getLayers().length) {
                 map.fitBounds(bounds_group.getBounds());
             }
+            map.setMaxBounds(map.getBounds());
         }
         map.createPane('pane_StamenToner_0');
         map.getPane('pane_StamenToner_0').style.zIndex = 400;
@@ -57,24 +58,24 @@
         });
         layer_StamenToner_0;
         map.addLayer(layer_StamenToner_0);
-        map.createPane('pane_Collisionsinvolvingcyclists_1');
-        map.getPane('pane_Collisionsinvolvingcyclists_1').style.zIndex = 401;
-        var img_Collisionsinvolvingcyclists_1 = 'data/Collisionsinvolvingcyclists_1.png';
-        var img_bounds_Collisionsinvolvingcyclists_1 = [[43.583087806538735,-79.6247020326501],[43.84755177796738,-79.23573610949943]];
-        var layer_Collisionsinvolvingcyclists_1 = new L.imageOverlay(img_Collisionsinvolvingcyclists_1,
-                                              img_bounds_Collisionsinvolvingcyclists_1,
-                                              {pane: 'pane_Collisionsinvolvingcyclists_1'});
-        bounds_group.addLayer(layer_Collisionsinvolvingcyclists_1);
-        map.addLayer(layer_Collisionsinvolvingcyclists_1);
-        map.createPane('pane_Collisionsinvolvingmotorists_2');
-        map.getPane('pane_Collisionsinvolvingmotorists_2').style.zIndex = 402;
-        var img_Collisionsinvolvingmotorists_2 = 'data/Collisionsinvolvingmotorists_2.png';
-        var img_bounds_Collisionsinvolvingmotorists_2 = [[43.57363208922042,-79.65055359045566],[43.869754997432324,-79.10292781248981]];
-        var layer_Collisionsinvolvingmotorists_2 = new L.imageOverlay(img_Collisionsinvolvingmotorists_2,
-                                              img_bounds_Collisionsinvolvingmotorists_2,
-                                              {pane: 'pane_Collisionsinvolvingmotorists_2'});
-        bounds_group.addLayer(layer_Collisionsinvolvingmotorists_2);
-        map.addLayer(layer_Collisionsinvolvingmotorists_2);
+        map.createPane('pane_Collisionsinvolvingmotorists_1');
+        map.getPane('pane_Collisionsinvolvingmotorists_1').style.zIndex = 401;
+        var img_Collisionsinvolvingmotorists_1 = 'data/Collisionsinvolvingmotorists_1.png';
+        var img_bounds_Collisionsinvolvingmotorists_1 = [[43.57363208922042,-79.65055359045566],[43.869754997432324,-79.10292781248981]];
+        var layer_Collisionsinvolvingmotorists_1 = new L.imageOverlay(img_Collisionsinvolvingmotorists_1,
+                                              img_bounds_Collisionsinvolvingmotorists_1,
+                                              {pane: 'pane_Collisionsinvolvingmotorists_1'});
+        bounds_group.addLayer(layer_Collisionsinvolvingmotorists_1);
+        map.addLayer(layer_Collisionsinvolvingmotorists_1);
+        map.createPane('pane_Collisionsinvolvingcyclists_2');
+        map.getPane('pane_Collisionsinvolvingcyclists_2').style.zIndex = 402;
+        var img_Collisionsinvolvingcyclists_2 = 'data/Collisionsinvolvingcyclists_2.png';
+        var img_bounds_Collisionsinvolvingcyclists_2 = [[43.583087806538735,-79.6247020326501],[43.84755177796738,-79.23573610949943]];
+        var layer_Collisionsinvolvingcyclists_2 = new L.imageOverlay(img_Collisionsinvolvingcyclists_2,
+                                              img_bounds_Collisionsinvolvingcyclists_2,
+                                              {pane: 'pane_Collisionsinvolvingcyclists_2'});
+        bounds_group.addLayer(layer_Collisionsinvolvingcyclists_2);
+        map.addLayer(layer_Collisionsinvolvingcyclists_2);
         function pop_Bikeways_3(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
@@ -277,7 +278,7 @@
         bounds_group.addLayer(layer_Bikeways_3);
         map.addLayer(layer_Bikeways_3);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'Bikeways<br /><table><tr><td style="text-align: center;"><img src="legend/Bikeways_3_BikeLanes0.png" /></td><td>Bike Lanes</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_CycleTracks1.png" /></td><td>Cycle Tracks</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_InformalDirtFootpath2.png" /></td><td>Informal Dirt Footpath</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_MajorMultiusePathway3.png" /></td><td>Major Multi-use Pathway</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_MinorMultiusePathway4.png" /></td><td>Minor Multi-use Pathway</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_ParkRoadsCyclingConnections5.png" /></td><td>Park Roads Cycling Connections</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_QuietStreetCyclingRoutes6.png" /></td><td>Quiet Street Cycling Routes</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_SignedRoutes7.png" /></td><td>Signed Routes</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_8.png" /></td><td></td></tr></table>': layer_Bikeways_3,"Collisions involving motorists": layer_Collisionsinvolvingmotorists_2,"Collisions involving cyclists": layer_Collisionsinvolvingcyclists_1,"Stamen Toner": layer_StamenToner_0,}, {collapsed:false} ).addTo(map);
+        L.control.layers(baseMaps,{'Bikeways<br /><table><tr><td style="text-align: center;"><img src="legend/Bikeways_3_BikeLanes0.png" /></td><td>Bike Lanes</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_CycleTracks1.png" /></td><td>Cycle Tracks</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_InformalDirtFootpath2.png" /></td><td>Informal Dirt Footpath</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_MajorMultiusePathway3.png" /></td><td>Major Multi-use Pathway</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_MinorMultiusePathway4.png" /></td><td>Minor Multi-use Pathway</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_ParkRoadsCyclingConnections5.png" /></td><td>Park Roads Cycling Connections</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_QuietStreetCyclingRoutes6.png" /></td><td>Quiet Street Cycling Routes</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_SignedRoutes7.png" /></td><td>Signed Routes</td></tr><tr><td></td></tr></table>': layer_Bikeways_3,"Collisions involving cyclists": layer_Collisionsinvolvingcyclists_2,"Collisions involving motorists": layer_Collisionsinvolvingmotorists_1,}, {collapsed:false} ).addTo(map);
         setBounds();
         L.ImageOverlay.include({
             getBounds: function () {
