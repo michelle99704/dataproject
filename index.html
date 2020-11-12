@@ -9,9 +9,11 @@
         <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
         <style>
-        #map {
-            width: 1444px;
-            height: 1032px;
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
         }
         </style>
         <title></title>
@@ -151,7 +153,7 @@
                 lineJoin: 'bevel',
                 weight: 2.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
                     break;
                 case 'Cycle Tracks':
@@ -164,7 +166,7 @@
                 lineJoin: 'bevel',
                 weight: 2.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
                     break;
                 case 'Informal Dirt Footpath':
@@ -177,7 +179,7 @@
                 lineJoin: 'bevel',
                 weight: 2.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
                     break;
                 case 'Major Multi-use Pathway':
@@ -190,7 +192,7 @@
                 lineJoin: 'bevel',
                 weight: 2.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
                     break;
                 case 'Minor Multi-use Pathway':
@@ -203,7 +205,7 @@
                 lineJoin: 'bevel',
                 weight: 2.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
                     break;
                 case 'Park Roads Cycling Connections':
@@ -216,7 +218,7 @@
                 lineJoin: 'bevel',
                 weight: 2.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
                     break;
                 case 'Quiet Street Cycling Routes':
@@ -229,7 +231,7 @@
                 lineJoin: 'bevel',
                 weight: 2.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
                     break;
                 case 'Signed Routes':
@@ -242,7 +244,7 @@
                 lineJoin: 'bevel',
                 weight: 2.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
                     break;
                 default:
@@ -255,7 +257,7 @@
                 lineJoin: 'bevel',
                 weight: 2.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
                     break;
             }
@@ -265,7 +267,7 @@
         map.getPane('pane_Bikeways_3').style['mix-blend-mode'] = 'normal';
         var layer_Bikeways_3 = new L.geoJson(json_Bikeways_3, {
             attribution: '',
-            interactive: false,
+            interactive: true,
             dataVar: 'json_Bikeways_3',
             layerName: 'layer_Bikeways_3',
             pane: 'pane_Bikeways_3',
@@ -275,7 +277,7 @@
         bounds_group.addLayer(layer_Bikeways_3);
         map.addLayer(layer_Bikeways_3);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'Bikeways<br /><table><tr><td style="text-align: center;"><img src="legend/Bikeways_3_BikeLanes0.png" /></td><td>Bike Lanes</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_CycleTracks1.png" /></td><td>Cycle Tracks</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_InformalDirtFootpath2.png" /></td><td>Informal Dirt Footpath</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_MajorMultiusePathway3.png" /></td><td>Major Multi-use Pathway</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_MinorMultiusePathway4.png" /></td><td>Minor Multi-use Pathway</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_ParkRoadsCyclingConnections5.png" /></td><td>Park Roads Cycling Connections</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_QuietStreetCyclingRoutes6.png" /></td><td>Quiet Street Cycling Routes</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_SignedRoutes7.png" /></td><td>Signed Routes</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_8.png" /></td><td></td></tr></table>': layer_Bikeways_3,"Collisions involving motorists": layer_Collisionsinvolvingmotorists_2,"Collisions involving cyclists": layer_Collisionsinvolvingcyclists_1,"Stamen Toner": layer_StamenToner_0,}).addTo(map);
+        L.control.layers(baseMaps,{'Bikeways<br /><table><tr><td style="text-align: center;"><img src="legend/Bikeways_3_BikeLanes0.png" /></td><td>Bike Lanes</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_CycleTracks1.png" /></td><td>Cycle Tracks</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_InformalDirtFootpath2.png" /></td><td>Informal Dirt Footpath</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_MajorMultiusePathway3.png" /></td><td>Major Multi-use Pathway</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_MinorMultiusePathway4.png" /></td><td>Minor Multi-use Pathway</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_ParkRoadsCyclingConnections5.png" /></td><td>Park Roads Cycling Connections</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_QuietStreetCyclingRoutes6.png" /></td><td>Quiet Street Cycling Routes</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_SignedRoutes7.png" /></td><td>Signed Routes</td></tr><tr><td style="text-align: center;"><img src="legend/Bikeways_3_8.png" /></td><td></td></tr></table>': layer_Bikeways_3,"Collisions involving motorists": layer_Collisionsinvolvingmotorists_2,"Collisions involving cyclists": layer_Collisionsinvolvingcyclists_1,"Stamen Toner": layer_StamenToner_0,}, {collapsed:false} ).addTo(map);
         setBounds();
         L.ImageOverlay.include({
             getBounds: function () {
